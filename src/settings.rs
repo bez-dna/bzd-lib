@@ -17,6 +17,7 @@ pub struct DBSettings {
 pub struct NATSSettings {
     pub endpoint: String,
     pub stream: String,
+    pub consumer: String,
 }
 
 pub trait Settings<T: DeserializeOwned> {
