@@ -1,4 +1,5 @@
 name: bzd
+
 services:
   pg:
     image: postgres:17-alpine
@@ -8,13 +9,14 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - pg-data:/var/lib/postgresql/data
-    healthcheck:
-      test: pg_isready -U postgres -d postgres
     ports:
       - 25432:5432
 
   nats:
     image: nats:2-alpine
+    command:
+      - "--jetstream"
+      - "--store_dir=/data"
     volumes:
       - nats-data:/data
     ports:
