@@ -17,6 +17,11 @@ pub struct DBSettings {
 pub struct NATSSettings {
     pub endpoint: String,
     pub stream: String,
+}
+
+#[derive(Deserialize, Clone)]
+pub struct NATSConsumerSettings {
+    pub subjects: Vec<String>,
     pub consumer: String,
 }
 
