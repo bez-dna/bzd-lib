@@ -1,7 +1,17 @@
 // sdk https://github.com/cloudevents/sdk-rust не поддерживает прото, только JSON,
 // поэтому я вытащил прото файл, но без билдера, оставим это на потом
 
+use strum_macros::EnumString;
+
 tonic::include_proto!("io.cloudevents.v1");
+
+#[derive(PartialEq, Debug, EnumString)]
+#[strum(ascii_case_insensitive)]
+pub enum Type {
+    Created,
+    Updated,
+    Deleted,
+}
 
 #[cfg(test)]
 mod tests {
