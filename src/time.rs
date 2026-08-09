@@ -13,3 +13,5 @@ impl ToProtoTimestamp for NaiveDateTime {
         })
     }
 }
+
+pub type DateTime = chrono::DateTime<chrono::Utc>;
