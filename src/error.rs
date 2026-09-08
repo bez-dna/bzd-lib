@@ -18,6 +18,7 @@ pub enum AppError {
 }
 
 // TODO: надо разобраться с этим поглууубже
+#[macro_export]
 macro_rules! impl_from_other {
     ($($err:ty),+ $(,)?) => {
         $(
