@@ -1,3 +1,5 @@
+use tonic::Status;
+
 pub type Error = anyhow::Error;
 
 #[derive(thiserror::Error, Debug)]
@@ -34,3 +36,14 @@ impl_from_other!(
     serde_json::Error,
     uuid::Error,
 );
+
+impl From<AppError> for Status {
+    fn from(error: AppError) -> Self {
+        match error {
+            AppError::Validation => Self::invalid_argument(error.to_string()),
+            AppError::NotFound => Self::not_found(error.to_string()),
+            AppError::Forbidden => Self::permission_denied(error.to_string()),
+            AppError::Internal | AppError::Unreachable => Self::internal(error.to_string()),
+        }
+    }
+}
