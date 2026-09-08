@@ -4,7 +4,6 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.104"
-thiserror = "2.0.20"
 
 config = { version = "0.15.25", default-features = false, features = ["toml"] }
 
