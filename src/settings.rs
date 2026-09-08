@@ -25,6 +25,11 @@ pub struct NATSConsumerSettings {
     pub consumer: String,
 }
 
+#[derive(Deserialize, Clone)]
+pub struct NATSProducerSettings {
+    pub subject: String,
+}
+
 pub trait Settings<T: DeserializeOwned> {
     fn new() -> Result<T, ConfigError> {
         let app_dir = env::var("APP__DIR").unwrap_or_else(|_| "./settings".into());
