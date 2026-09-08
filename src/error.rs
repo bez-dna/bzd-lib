@@ -13,8 +13,6 @@ pub enum AppError {
 
     #[error("INTERNAL")]
     Internal,
-    #[error("UNREACHABLE")]
-    Unreachable,
 }
 
 // TODO: надо разобраться с этим поглууубже
@@ -44,7 +42,7 @@ impl From<AppError> for Status {
             AppError::Validation => Self::invalid_argument(error.to_string()),
             AppError::NotFound => Self::not_found(error.to_string()),
             AppError::Forbidden => Self::permission_denied(error.to_string()),
-            AppError::Internal | AppError::Unreachable => Self::internal(error.to_string()),
+            AppError::Internal => Self::internal(error.to_string()),
         }
     }
 }
