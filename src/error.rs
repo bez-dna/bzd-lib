@@ -14,3 +14,23 @@ pub enum AppError {
     #[error("UNREACHABLE")]
     Unreachable,
 }
+
+// TODO: надо разобраться с этим поглууубже
+macro_rules! impl_from_other {
+    ($($err:ty),+ $(,)?) => {
+        $(
+            impl From<$err> for AppError {
+                fn from(_: $err) -> Self {
+                    Self::Internal
+                }
+            }
+        )+
+    };
+}
+
+impl_from_other!(
+    prost::EncodeError,
+    prost::DecodeError,
+    serde_json::Error,
+    uuid::Error,
+);
