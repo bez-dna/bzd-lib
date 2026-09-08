@@ -4,6 +4,7 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.104"
+thiserror = "2.0.20"
 
 config = { version = "0.15.25", default-features = false, features = ["toml"] }
 
@@ -19,6 +20,7 @@ prost-types = "0.14.4"
 
 strum = "0.28.0"
 strum_macros = "0.28.0"
+
 chrono = { version = "0.4.45", default-features = false, features = [
   "now",
   "serde",
